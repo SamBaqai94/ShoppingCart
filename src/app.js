@@ -45,6 +45,7 @@ class ShoppingCart extends Component {
             <div>
                 <h2 className="text-center">Shopping Cart</h2>
                 <p>{status}</p>
+                <button className="float-center ml-10 btn btn-success">Add Item</button>
                 <ul className="list-group">
                     {this.state.items.map((item, step) => {
                         return (this.renderList(item, step));
