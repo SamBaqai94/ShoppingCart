@@ -39,13 +39,17 @@ class ShoppingCart extends Component {
         });
     }
 
+    addItem = () => {
+        console.log('clicked');
+    }
+
     render() {
         let status = "Number of Item in cart: " + (this.state.items.length > 0 ? this.state.items.length : "Cart is empty");
         return (
             <div>
                 <h2 className="text-center">Shopping Cart</h2>
                 <p>{status}</p>
-                <button className="float-center ml-10 btn btn-success">Add Item</button>
+                <button className="float-center ml-10 btn btn-success" onClick={this.addItem}>Add Item</button>
                 <ul className="list-group">
                     {this.state.items.map((item, step) => {
                         return (this.renderList(item, step));
