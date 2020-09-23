@@ -22,7 +22,6 @@ class ShoppingCart extends Component {
                     'item': 'item2'
                 },
             ],
-            showComponent: false,
         }
     }
 
@@ -40,35 +39,32 @@ class ShoppingCart extends Component {
         });
     }
 
-    addItem = () => {
+    addItemForm = () => {
+        const items = this.state.items.slice();
+        const length = items.length;
+        items[(length - 1) + 1] = {
+            'item': 'item' + ((length) + 1)
+        };
         this.setState({
-            showComponent: true,
-        });
+            items: items
+        })
     }
 
     render() {
         let status = "Number of Item in cart: " + (this.state.items.length > 0 ? this.state.items.length : "Cart is empty");
         return (
-            <React.Fragment>
-                <div>
-                    <h2 className="text-center">Shopping Cart</h2>
-                    <p>{status}</p>
-                    <button className="float-center ml-10 btn btn-success" onClick={this.addItem}>Add Item</button>
+            <div>
 
-                    <ul className="list-group">
-                        {this.state.items.map((item, step) => {
-                            return (this.renderList(item, step));
-                        })}
-                    </ul>
+                <h2 className="text-center">Shopping Cart</h2>
+                <p>{status}</p>
+                <button className="float-center ml-10 btn btn-success" onClick={this.addItemForm}>Add Item</button>
 
-                </div>
-                <div>
-                    {this.state.showComponent ?
-                        <AddItem /> : null
-                    }
-                </div>
-            </React.Fragment>
-
+                <ul className="list-group">
+                    {this.state.items.map((item, step) => {
+                        return (this.renderList(item, step));
+                    })}
+                </ul>
+            </div>
         );
     }
 }
