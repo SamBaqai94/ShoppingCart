@@ -1,4 +1,4 @@
-import React, { Component } from 'React';
+import React, { Component } from 'react';
 
 class AddItem extends Component {
     constructor(props) {
@@ -6,20 +6,31 @@ class AddItem extends Component {
         this.state = {
             item: {
                 name: '',
+
             },
+            resetComponent: false,
         }
     }
+
+    reset = () => {
+        this.setState({
+            resetComponent: true,
+        });
+    }
+
     render() {
         return (
             <div>
                 <form>
                     <div className='form-group'>
-                        <label for='itemName'>Item Name</label>
-                        <input type="text" class="form-control" id="itemName" placeholder="Item Name" />
+                        <label >Item Name: </label>
+                        <input type="text" className="form-control" id="itemName" placeholder="Item Name" />
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         )
     }
 }
+
+export default AddItem;
